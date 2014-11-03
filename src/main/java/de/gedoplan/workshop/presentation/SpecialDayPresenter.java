@@ -32,10 +32,12 @@ public class SpecialDayPresenter implements Serializable {
         return this.specialDays;
     }
 
-    public void save() {
+    public String save() {
         for (final SpecialDay sd : this.specialDays) {
             this.specialDayRepository.merge(sd);
         }
+
+        return "home";
     }
 
     public void add() {
