@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +21,7 @@ public class Talk extends GeneratedIntegerIdEntity {
     private String title;
 
     @ElementCollection
+    @OrderColumn
     private List<String> speakers;
 
     @Enumerated(EnumType.STRING)
@@ -33,6 +35,10 @@ public class Talk extends GeneratedIntegerIdEntity {
 
     @ManyToOne
     private SpecialDay specialDay;
+
+    protected Talk() {
+
+    }
 
     public Talk(String title, TalkType talkType, Date start, Date duration, String... speakers) {
         this.title = title;
