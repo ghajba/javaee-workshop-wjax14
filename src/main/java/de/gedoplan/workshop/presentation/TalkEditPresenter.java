@@ -13,7 +13,7 @@ import de.gedoplan.workshop.persistence.TalkRepository;
  *
  */
 @Named
-@FlowScoped(value = "talk")
+@FlowScoped(value = "talkEdit")
 public class TalkEditPresenter {
 
     @Inject

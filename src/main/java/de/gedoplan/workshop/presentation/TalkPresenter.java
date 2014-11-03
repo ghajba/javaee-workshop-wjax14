@@ -2,8 +2,8 @@ package de.gedoplan.workshop.presentation;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
-import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,7 +15,7 @@ import de.gedoplan.workshop.persistence.All;
  *
  */
 @Named(value = "talkPresenter")
-@FlowScoped("talk")
+@RequestScoped
 public class TalkPresenter {
 
     @Inject
@@ -32,6 +32,6 @@ public class TalkPresenter {
 
     public String select(Talk talk) {
         this.currentTalk = talk;
-        return "talkEdit.xhtml";
+        return "talkEdit";
     }
 }
