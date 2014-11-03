@@ -1,8 +1,9 @@
 package de.gedoplan.workshop.presentation;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -15,8 +16,10 @@ import de.gedoplan.workshop.persistence.SpecialDayRepository;
  *
  */
 @Named(value = "specialDayPresenter")
-@RequestScoped
-public class SpecialDayPresenter {
+@SessionScoped
+public class SpecialDayPresenter implements Serializable {
+
+    private static final long serialVersionUID = 4112938102448419933L;
 
     @Inject
     private SpecialDayRepository specialDayRepository;
@@ -33,6 +36,10 @@ public class SpecialDayPresenter {
         for (final SpecialDay sd : this.specialDays) {
             this.specialDayRepository.merge(sd);
         }
+    }
+
+    public void add() {
+        this.specialDays.add(new SpecialDay(null, null));
     }
 
     // @PostConstruct

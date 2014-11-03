@@ -1,5 +1,6 @@
 package de.gedoplan.workshop.persistence;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.inject.Produces;
@@ -15,7 +16,9 @@ import de.gedoplan.workshop.domain.SpecialDay;
  *
  */
 @Transactional
-public class SpecialDayRepository {
+public class SpecialDayRepository implements Serializable {
+
+    private static final long serialVersionUID = -4809881143235601520L;
 
     @Inject
     EntityManager entityManager;
