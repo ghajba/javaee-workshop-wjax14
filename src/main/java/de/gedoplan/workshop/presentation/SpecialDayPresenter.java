@@ -3,7 +3,7 @@ package de.gedoplan.workshop.presentation;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,7 +16,7 @@ import de.gedoplan.workshop.persistence.SpecialDayRepository;
  *
  */
 @Named(value = "specialDayPresenter")
-@SessionScoped
+@FlowScoped("specialDay")
 public class SpecialDayPresenter implements Serializable {
 
     private static final long serialVersionUID = 4112938102448419933L;
@@ -37,7 +37,7 @@ public class SpecialDayPresenter implements Serializable {
             this.specialDayRepository.merge(sd);
         }
 
-        return "home";
+        return "exit";
     }
 
     public void add() {
