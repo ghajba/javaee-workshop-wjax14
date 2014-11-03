@@ -1,12 +1,9 @@
 package de.gedoplan.workshop.persistence;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author GHajba 2014 nov. 3
@@ -15,9 +12,10 @@ import javax.persistence.PersistenceUnit;
 @ApplicationScoped
 public class EntityManagerProducer {
 
-    // @PersistenceContext(unitName = "default")
-    // @Produces
-    // private EntityManager entityManager;
+    @PersistenceContext(unitName = "default")
+    @Produces
+    private EntityManager entityManager;
+
     //
     // @PersistenceContext(unitName = "test")
     // @Produces
@@ -29,17 +27,17 @@ public class EntityManagerProducer {
     // return this.entityManager;
     // }
 
-    @PersistenceUnit(unitName = "default")
-    EntityManagerFactory entityManagerFactory;
-
-    @Produces
-    @RequestScoped
-    EntityManager createEntityManager() {
-        return this.entityManagerFactory.createEntityManager();
-    }
-
-    void closeEntityManager(@Disposes EntityManager entityManager) {
-        entityManager.close();
-    }
+    // @PersistenceUnit(unitName = "default")
+    // EntityManagerFactory entityManagerFactory;
+    //
+    // @Produces
+    // @RequestScoped
+    // EntityManager createEntityManager() {
+    // return this.entityManagerFactory.createEntityManager();
+    // }
+    //
+    // void closeEntityManager(@Disposes EntityManager entityManager) {
+    // entityManager.close();
+    // }
 
 }

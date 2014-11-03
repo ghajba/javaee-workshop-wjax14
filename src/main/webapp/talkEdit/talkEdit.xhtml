@@ -22,6 +22,12 @@
 				<f:selectItems value="#{talkEditPresenter.talkTypes}" />
 			</h:selectOneRadio>
 			
+			<h:outputLabel value="Special Day:" for="specialday" />
+			<h:selectOneMenu value="#{talkEditPresenter.currentTalk.specialDay}" id="specialday">
+				<f:selectItems value="#{talkEditPresenter.specialDays}" var="sd"  itemLabel="#{sd.name}" itemValue="#{sd}"/>
+				<f:converter converterId="SpecialDayConverter" />
+			</h:selectOneMenu>
+			
 			
 <!-- 			<h:outputLabel value="Start time: " for="time" /> -->
 <!-- 			<h:inputText value="#{talkPresenter.currentTalk.start}" id="time"/> -->
