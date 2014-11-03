@@ -2,8 +2,8 @@ package de.gedoplan.workshop.persistence;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import de.gedoplan.workshop.domain.SpecialDay;
@@ -14,7 +14,7 @@ import de.gedoplan.workshop.domain.SpecialDay;
  */
 public class SpecialDayRepository {
 
-    @PersistenceContext(unitName = "default")
+    @Inject
     EntityManager entityManager;
 
     public void persist(SpecialDay specialDay) {
