@@ -8,7 +8,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class SpecialDay {
+public class SpecialDay extends SingleIdEntity<String> {
 
     @Id
     private String id;
@@ -23,6 +23,7 @@ public class SpecialDay {
         this.name = name;
     }
 
+    @Override
     public String getId() {
         return this.id;
     }
@@ -39,8 +40,4 @@ public class SpecialDay {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }
