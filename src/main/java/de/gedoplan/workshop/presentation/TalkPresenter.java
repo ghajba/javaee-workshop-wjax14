@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import de.gedoplan.workshop.domain.Talk;
+import de.gedoplan.workshop.domain.TalkType;
 import de.gedoplan.workshop.persistence.All;
 import de.gedoplan.workshop.persistence.TalkRepository;
 
@@ -42,6 +43,10 @@ public class TalkPresenter {
     public String save() {
         this.talkRepository.merge(this.currentTalk);
         return "exit";
+    }
+
+    public TalkType[] getTalkTypes() {
+        return TalkType.values();
     }
 
 }
