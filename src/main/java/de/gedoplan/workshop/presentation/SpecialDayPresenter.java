@@ -29,6 +29,12 @@ public class SpecialDayPresenter {
         return this.specialDays;
     }
 
+    public void save() {
+        for (final SpecialDay sd : this.specialDays) {
+            this.specialDayRepository.merge(sd);
+        }
+    }
+
     // @PostConstruct
     // void init() {
     // this.specialDays = this.specialDayRepository.findAll();

@@ -6,6 +6,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import de.gedoplan.workshop.domain.SpecialDay;
 
@@ -13,6 +14,7 @@ import de.gedoplan.workshop.domain.SpecialDay;
  * @author GHajba 2014 nov. 3
  *
  */
+@Transactional
 public class SpecialDayRepository {
 
     @Inject
@@ -20,6 +22,10 @@ public class SpecialDayRepository {
 
     public void persist(SpecialDay specialDay) {
         this.entityManager.persist(specialDay);
+    }
+
+    public void merge(SpecialDay specialDay) {
+        this.entityManager.merge(specialDay);
     }
 
     @Produces
