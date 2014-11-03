@@ -1,6 +1,7 @@
 package de.gedoplan.workshop.persistence;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 
 import de.gedoplan.workshop.domain.TalkType;
 
@@ -8,42 +9,25 @@ import de.gedoplan.workshop.domain.TalkType;
  * @author GHajba 2014 nov. 3
  *
  */
-public class TalkTypeConverter implements AttributeConverter<TalkType, String> {
+@Converter(autoApply = true)
+public class TalkTypeConverter implements AttributeConverter<TalkType, Character> {
 
     @Override
-    public String convertToDatabaseColumn(TalkType attribute) {
+    public Character convertToDatabaseColumn(TalkType attribute) {
 
         if (attribute == null) {
             return null;
         }
-        switch (attribute) {
-        case KEYNOTE:
-            return "K";
-        case SESSION:
-            return "S";
-        case WORKSHOP:
-            return "W";
-        default:
-            throw new IllegalArgumentException("Unknown TalkType: " + attribute);
-        }
+        return attribute.getPersistentForm();
     }
 
     @Override
-    public TalkType convertToEntityAttribute(String dbData) {
+    public TalkType convertToEntityAttribute(Character dbData) {
         if (dbData == null) {
             return null;
         }
 
-        switch (dbData) {
-        case "K":
-            return TalkType.KEYNOTE;
-        case "S":
-            return TalkType.SESSION;
-        case "W":
-            return TalkType.WORKSHOP;
-        default:
-            throw new IllegalArgumentException("Unknown TalkType: " + dbData);
-        }
+        return TalkType.valueOf(dbData);
     }
 
 }
