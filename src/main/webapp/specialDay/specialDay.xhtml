@@ -2,18 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:prime="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
 	<h2>SpecialDays:</h2>
-	<h:dataTable value="#{specialDayPresenter.specialDays}" var="sd">
-		<h:column>
+	<prime:dataTable value="#{specialDayPresenter.specialDays}" var="sd">
+		<prime:column>
+			<f:facet name="header">Id</f:facet>
 			<h:outputText value="#{sd.id}" />
-		</h:column>
-		<h:column>
+		</prime:column>
+		<prime:column>
+			<f:facet name="header">Name</f:facet>
 			<h:outputText value="#{sd.name}" />
-		</h:column>
-	</h:dataTable>
+		</prime:column>
+	</prime:dataTable>
 </body> 
 </html>
