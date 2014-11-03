@@ -2,6 +2,7 @@ package de.gedoplan.workshop.presentation;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,7 +21,14 @@ public class SpecialDayPresenter {
     @Inject
     private SpecialDayRepository specialDayRepository;
 
+    private List<SpecialDay> specialDays;
+
     public List<SpecialDay> getSpecialDays() {
-        return this.specialDayRepository.findAll();
+        return this.specialDays;
+    }
+
+    @PostConstruct
+    void init() {
+        this.specialDays = this.specialDayRepository.findAll();
     }
 }
